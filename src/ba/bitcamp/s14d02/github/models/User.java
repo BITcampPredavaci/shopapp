@@ -23,6 +23,16 @@ public class User {
 	@Column(precision=10, scale=2)
 	BigDecimal balance;
 
+	public User(){
+		
+	}
+	
+	public User(String fullName, String email, BigDecimal balance) {
+		this.fullName = fullName;
+		this.email = email;
+		this.balance = balance;
+	}
+
 	public Long getId() {
 		return id;
 	}

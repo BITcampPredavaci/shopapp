@@ -21,6 +21,16 @@ public class Product {
 	
 	@Column
 	Integer quantity;
+	
+	public Product(){
+		
+	}
+	
+	public Product(String title, BigDecimal price, Integer quantity) {
+		this.title = title;
+		this.price = price;
+		this.quantity = quantity;
+	}
 
 	public Long getId() {
 		return id;
