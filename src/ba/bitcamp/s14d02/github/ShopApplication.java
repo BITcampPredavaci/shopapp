@@ -58,20 +58,47 @@ public class ShopApplication {
 		return firstUserPurchasedMonitor;
 	}
 
+	/**
+	 * "createProduct" method creates a new product. User is asked to insert product title, price and quantity.
+	 * @return
+	 */
 	private static Product createProduct() {
 		// kreiranje novog zapisa o proizvodu
-		Product monitor = new Product("Monitor, Dell 28\"", new BigDecimal("399.99"), 0);
+
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter product title");
+		String title = in.nextLine();
+		System.out.println("Enter price");
+		String price = in.nextLine();
+		System.out.println("Enter quantity");
+		Integer quantity = in.nextInt();
+		in.close();
+
+		Product monitor = new Product(title, new BigDecimal(price), quantity);
 
 		Ebean.save(monitor);
 		return monitor;
 	}
 
+	/**
+	 * Method creates a new user. User is asked to insert email address, full name and balance.
+	 * @return
+	 */
 	private static User createUser() {
 		// kreiranje novog zapisa o korisniku u bazu
-		User first = new User("Mujo Mujcinovic", "mujo.mujcinovic@bitcamp.ba", new BigDecimal(0));
+		
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter email: ");
+		String email = in.nextLine();
+		System.out.println("Enter full name: ");
+		String name = in.nextLine();
+		System.out.println("Enter balance: ");
+		String balance = in.nextLine();
+		in.close();
+
+		User first = new User(name, email, new BigDecimal(balance));
 
 		Ebean.save(first);
 		return first;
 	}
-
 }

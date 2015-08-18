@@ -2,3 +2,4 @@
 .recommenders
 /bin
 /target
+.DS_Store
