@@ -58,6 +58,10 @@ public class ShopApplication {
 		return firstUserPurchasedMonitor;
 	}
 
+	/**
+	 * "createProduct" method creates a new product. User is asked to insert product title, price and quantity.
+	 * @return
+	 */
 	private static Product createProduct() {
 		// kreiranje novog zapisa o proizvodu
 		Product monitor = new Product();
@@ -76,6 +80,10 @@ public class ShopApplication {
 		return monitor;
 	}
 
+	/**
+	 * Method creates a new user. User is asked to insert email address, full name and balance.
+	 * @return
+	 */
 	private static User createUser() {
 		// kreiranje novog zapisa o korisniku u bazu
 		User first = new User();
