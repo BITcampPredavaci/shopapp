@@ -1,6 +1,7 @@
 package ba.bitcamp.s14d02.github;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Scanner;
 
 import org.avaje.agentloader.AgentLoader;
@@ -17,18 +18,22 @@ public class ShopApplication {
 	// statički blok se izvršava prilikom učitavanja klase u memoriju, dakle
 	// prije pokretanja programa
 	static {
+		System.out.println("foo");
 		// radimo "enhancement" svih klasa u navedenom package-u
 		AgentLoader.loadAgentFromClasspath("avaje-ebeanorm-agent",
 				"debug=1;packages=ba.bitcamp.s14d02.github.models.**");
+		System.out.println("foobaae");
 	}
 
 	private static EbeanServer server = Ebean.getServer("h2");
 
 	public static void main(String[] args) {
 
+		
 		System.out.println("Press 1 if you want to create product.");
 		System.out.println("Press 2 if you want to create user.");
 		System.out.println("Press 3 if you want to create purchase.");
+		System.out.println("Press 4 if you want to see all users.");
 
 		Scanner input = new Scanner(System.in);
 
@@ -38,11 +43,17 @@ public class ShopApplication {
 		} else if (option == 2) {
 			User first = createUser();
 		} else if (option == 3) {
+
 			//TODO implementiranje proizvodas
 			// Purchase firstUserPurchasedMonitor = CreatePurchase(first,
 			// monitor);
-		}
+		}  
+		
+		getAllUsers();
+
 		input.close();
+
+		
 	}
 
 	private static Purchase createPurchase(User first, Product monitor) {
@@ -78,6 +89,17 @@ public class ShopApplication {
 
 		Ebean.save(first);
 		return first;
+	}
+	
+	/**
+	 * Prints all users from table user.
+	 */
+	private static void getAllUsers() {
+		List<User> users = Ebean.find(User.class).findList();
+		 
+		for (User u : users) {
+			System.out.println(u);			
+		}
 	}
 
 }

@@ -54,4 +54,15 @@ public class User {
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "id=" + id + ", fullName: " + fullName + ", email: " + email
+				+ ", balance: " + balance;
+	}
+	
+	
 }
