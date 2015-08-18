@@ -3,6 +3,8 @@ package ba.bitcamp.s14d02.github;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 import org.avaje.agentloader.AgentLoader;
 
 import ba.bitcamp.s14d02.github.models.Product;
@@ -26,6 +28,17 @@ public class ShopApplication {
 
 	public static void main(String[] args) {
 
+		String[] options = { "Product", "User", "Purchase", "List all users" };
+
+		int choice = JOptionPane
+				.showOptionDialog(
+						null,
+						"What do you want to create? \nOr maybe you want to list all users?",
+						"Question", JOptionPane.DEFAULT_OPTION,
+						JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+		// TODO remove sysouts and input via Scanner, not done due to possible
+		// commit conflicts
 		System.out.println("Press 1 if you want to create product.");
 		System.out.println("Press 2 if you want to create user.");
 		System.out.println("Press 3 if you want to create purchase.");
@@ -33,14 +46,18 @@ public class ShopApplication {
 		Scanner input = new Scanner(System.in);
 
 		int option = input.nextInt();
-		if (option == 1) {
+		if (choice == 0) {
 			Product monitor = createProduct();
-		} else if (option == 2) {
+		} else if (choice == 1) {
 			User first = createUser();
-		} else if (option == 3) {
-			//TODO implementiranje proizvodas
+		} else if (choice == 2) {
+			// TODO implementiranje proizvodas
 			// Purchase firstUserPurchasedMonitor = CreatePurchase(first,
 			// monitor);
+		} else if (choice == 3) {
+			getAllUsers();
+		} else if (choice == -1) {
+			System.out.println("No choice made, user exited.");
 		}
 		input.close();
 	}
@@ -59,7 +76,9 @@ public class ShopApplication {
 	}
 
 	/**
-	 * "createProduct" method creates a new product. User is asked to insert product title, price and quantity.
+	 * "createProduct" method creates a new product. User is asked to insert
+	 * product title, price and quantity.
+	 * 
 	 * @return
 	 */
 	private static Product createProduct() {
@@ -81,12 +100,14 @@ public class ShopApplication {
 	}
 
 	/**
-	 * Method creates a new user. User is asked to insert email address, full name and balance.
+	 * Method creates a new user. User is asked to insert email address, full
+	 * name and balance.
+	 * 
 	 * @return
 	 */
 	private static User createUser() {
 		// kreiranje novog zapisa o korisniku u bazu
-		
+
 		Scanner in = new Scanner(System.in);
 		System.out.println("Enter email: ");
 		String email = in.nextLine();
