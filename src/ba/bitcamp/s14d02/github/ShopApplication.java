@@ -60,10 +60,7 @@ public class ShopApplication {
 
 	private static Product createProduct() {
 		// kreiranje novog zapisa o proizvodu
-		Product monitor = new Product();
-		monitor.setTitle("Monitor, Dell 28\"");
-		monitor.setPrice(new BigDecimal("399.99"));
-		monitor.setQuantity(0);
+		Product monitor = new Product("Monitor, Dell 28\"", new BigDecimal("399.99"), 0);
 
 		Ebean.save(monitor);
 		return monitor;
@@ -71,10 +68,7 @@ public class ShopApplication {
 
 	private static User createUser() {
 		// kreiranje novog zapisa o korisniku u bazu
-		User first = new User();
-		first.setFullName("Mujo Mujčinović");
-		first.setEmail("mujo.mujcinovic@bitcamp.ba");
-		first.setBalance(new BigDecimal(0));
+		User first = new User("Mujo Mujcinovic", "mujo.mujcinovic@bitcamp.ba", new BigDecimal(0));
 
 		Ebean.save(first);
 		return first;
