@@ -61,10 +61,17 @@ public class ShopApplication {
 	private static Product createProduct() {
 		// kreiranje novog zapisa o proizvodu
 		Product monitor = new Product();
-		monitor.setTitle("Monitor, Dell 28\"");
-		monitor.setPrice(new BigDecimal("399.99"));
-		monitor.setQuantity(0);
-
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter product title");
+		String title = in.nextLine();
+		System.out.println("Enter price");
+		String price = in.nextLine();
+		System.out.println("Enter quantity");
+		Integer quantity = in.nextInt();
+		monitor.setTitle(title);
+		monitor.setPrice(new BigDecimal(price));
+		monitor.setQuantity(quantity);
+		in.close();
 		Ebean.save(monitor);
 		return monitor;
 	}
@@ -72,12 +79,18 @@ public class ShopApplication {
 	private static User createUser() {
 		// kreiranje novog zapisa o korisniku u bazu
 		User first = new User();
-		first.setFullName("Mujo Mujčinović");
-		first.setEmail("mujo.mujcinovic@bitcamp.ba");
-		first.setBalance(new BigDecimal(0));
-
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter email: ");
+		String email = in.nextLine();
+		System.out.println("Enter full name: ");
+		String name = in.nextLine();
+		System.out.println("Enter balance: ");
+		String balance = in.nextLine();
+		first.setFullName(name);
+		first.setEmail(email);
+		first.setBalance(new BigDecimal(balance));
+		in.close();
 		Ebean.save(first);
 		return first;
 	}
-
 }
