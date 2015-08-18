@@ -64,7 +64,7 @@ public class ShopApplication {
 	 */
 	private static Product createProduct() {
 		// kreiranje novog zapisa o proizvodu
-		Product monitor = new Product();
+
 		Scanner in = new Scanner(System.in);
 		System.out.println("Enter product title");
 		String title = in.nextLine();
@@ -72,10 +72,10 @@ public class ShopApplication {
 		String price = in.nextLine();
 		System.out.println("Enter quantity");
 		Integer quantity = in.nextInt();
-		monitor.setTitle(title);
-		monitor.setPrice(new BigDecimal(price));
-		monitor.setQuantity(quantity);
 		in.close();
+
+		Product monitor = new Product(title, new BigDecimal(price), quantity);
+
 		Ebean.save(monitor);
 		return monitor;
 	}
@@ -86,7 +86,7 @@ public class ShopApplication {
 	 */
 	private static User createUser() {
 		// kreiranje novog zapisa o korisniku u bazu
-		User first = new User();
+		
 		Scanner in = new Scanner(System.in);
 		System.out.println("Enter email: ");
 		String email = in.nextLine();
@@ -94,10 +94,10 @@ public class ShopApplication {
 		String name = in.nextLine();
 		System.out.println("Enter balance: ");
 		String balance = in.nextLine();
-		first.setFullName(name);
-		first.setEmail(email);
-		first.setBalance(new BigDecimal(balance));
 		in.close();
+
+		User first = new User(name, email, new BigDecimal(balance));
+
 		Ebean.save(first);
 		return first;
 	}
